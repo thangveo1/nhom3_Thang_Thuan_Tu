@@ -3,6 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <title></title>
   <link rel="stylesheet" href="">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -32,15 +42,15 @@
             Quản lý
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Nhân viên</a>
+            <a class="dropdown-item" href="nhanvien.php">Nhân viên</a>
             <a class="dropdown-item" href="benhnhan.php">Bệnh nhân</a>
-            <a class="dropdown-item" href="#">Kho</a>
+            <a class="dropdown-item" href="khothuoc.php">Kho</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Nhập thuốc</a>
+            <a class="dropdown-item" href="themthuoc.php">Nhập thuốc</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Đơn khám</a>
+          <a class="nav-link" href="donkhambenh.php">Đơn khám</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Thống kê</a>

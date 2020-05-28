@@ -58,7 +58,7 @@
 							echo '<td>'.$value['cmnd'].'</td>';
 							echo '<td>'.$value['phone'].'</td>';
 							echo '<td>'.$value['diachi'].'</td>';
-							echo '<td><i class="fas fa-edit mx-2 text-success"></i><i class="far fa-trash-alt text-danger"></i></td>';
+							echo '<td><a href="suathongtin.php?id='.$value['id'].'"><i class="fas fa-edit mx-2 text-success"></a></i><a href="lichsukhambenh.php"><i class="fas fa-file-medical mx-2 text-warning"></a></i></td>';
 
 							echo '</tr>';
 						}

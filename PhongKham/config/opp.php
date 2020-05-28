@@ -68,6 +68,12 @@
 		$this->query($sql);
 		return $this->selectall_cf();
 	}
+	public function nhan_vien()
+	{
+		$sql = "SELECT * FROM nhanvien ORDER BY id DESC";
+		$this->query($sql);
+		return $this->selectall_cf();
+	}
 
 	public function check_phone($phone)
 	{
@@ -83,5 +89,47 @@
 		(NULL, '".$name."', '".$phone."','".$diachi."', '".$cmnd."', '".$ngay_sinh."', '".$gioi_tinh."', '".$ngay_kham."', '".$ngay_taikham."', '".$ghi_chu."')";
 		return $this->query($sql);
 	}
+
+	public function add_thuoc($name, $soluong, $donvitinh, $gianhap, $giaban, $tacdung){
+		$sql = "INSERT INTO thuoc (id, name, soluong, donvitinh, gianhap, giaban, tacdung) VALUES (NULL, '".$name."', '".$soluong."', '".$donvitinh."', '".$gianhap."', '".$giaban."', '".$tacdung."');";
+		return $this->query($sql);
+	}
+	public function thongtinbenhnhan($id){
+		$sql = "SELECT * FROM thuoc WHERE id ='".$id."'";
+		$this->result = $this->query($sql);
+		return $this->select_cf();
+	}
+	public function editbenhnhan($id, $name, $phone, $diachi, $cmnd, $ngay_sinh, $gioi_tinh, $ngay_kham, $ngay_taikham, $ghi_chu){
+		$sql="UPDATE benhnhan SET name = '".$name."', phone = '".$phone."', diachi = '".$diachi."', cmnd = '".$cmnd."', ngay_sinh = '".$ngay_sinh."',gioi_tinh = '".$gioi_tinh."',ngay_kham = '".$ngay_kham."',  ngay_taikham = '".$ngay_taikham."' WHERE benhnhan.id = '".$id."'";
+		return  $this->query($sql);
+	}
+
+	public function xemkhothuoc($page, $count){
+		$sql ="SELECT * FROM thuoc LIMIT ".($page-1)*$count.", $count";
+		$this->result = $this->query($sql);
+		return $this->selectall_cf();
+	}
+	public function demtongthuoc(){
+		$sql ="SELECT * FROM thuoc";
+		$this->result = $this->query($sql);
+		return $this->numrow();
+	}
+
+	public function thongtinthuoc($id){
+		$sql = "SELECT * FROM thuoc WHERE id ='".$id."'";
+		$this->result = $this->query($sql);
+		return $this->select_cf();
+	}
+
+	public function editthuoc($id,$name, $soluong, $donvitinh, $gianhap, $giaban, $tacdung){
+		$sql ="UPDATE thuoc SET name = '".$name."', soluong = '".$soluong."', donvitinh = '".$donvitinh."', gianhap = '".$gianhap."', giaban = '".$giaban."', tacdung = '".$tacdung."' WHERE thuoc.id = '".$id."'";
+		return  $this->query($sql);
+	}
+	public function tim_benhnhan($id){
+		$sql="SELECT *FROM benhnhan WHERE phone='".$id."'or cmnd='".$id."'";
+		$this->result = $this->query($sql);
+		return $this->select_cf();
+	}
+	public function add_donthuoc()
 }
  ?>
