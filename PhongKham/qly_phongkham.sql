@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 27, 2020 lúc 10:39 AM
+-- Thời gian đã tạo: Th6 07, 2020 lúc 10:05 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -63,7 +63,8 @@ INSERT INTO `benhnhan` (`id`, `name`, `phone`, `diachi`, `cmnd`, `ngay_sinh`, `g
 (15, 'Nguyễn Hữu Thắng', '0123456789', 'ghv6', '94613', '2230-08-05', 0, '2020-05-24', '2020-05-27', 'sezxrdctfgh'),
 (16, 'yèubnjsk', '67841563', 'ctrffvgh', '95862', '2000-02-05', 1, '2020-05-24', '2020-05-20', 'cfghbjnk'),
 (17, 'xdcfgvhj', '98562', 'fvghjk856', '45678', '8456-09-07', 1, '2020-05-24', '2020-05-30', 'dxfghj'),
-(18, 'xdcfgvhj', '98562', 'fvghjk856', '45678', '8456-09-07', 1, '2020-05-24', '2020-05-30', 'dxfghj');
+(18, 'xdcfgvhj', '98562', 'fvghjk856', '45678', '8456-09-07', 1, '2020-05-24', '2020-05-30', 'dxfghj'),
+(19, '', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>74</b><br />', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>98</b><br />', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>94</b><br />', '0000-00-00', 0, '2020-06-02', '0000-00-00', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>106</b><br />');
 
 -- --------------------------------------------------------
 
@@ -73,18 +74,22 @@ INSERT INTO `benhnhan` (`id`, `name`, `phone`, `diachi`, `cmnd`, `ngay_sinh`, `g
 
 CREATE TABLE `dichvu` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL
+  `name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `uu_dai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `dichvu`
 --
 
-INSERT INTO `dichvu` (`id`, `name`) VALUES
-(1, 'Khám bệnh'),
-(2, 'Thủ thuật'),
-(3, 'Thuốc'),
-(4, 'kính');
+INSERT INTO `dichvu` (`id`, `name`, `uu_dai`) VALUES
+(1, 'Nội khoa', 10),
+(2, 'Ngoại khoa', 20),
+(3, 'Da liễu', 10),
+(4, 'Răng hàm mặt', 20),
+(5, 'Sản phụ khoa', 20),
+(6, 'Tai mũi họng', 15),
+(7, 'Bác sĩ gia đình', 5);
 
 -- --------------------------------------------------------
 
@@ -94,8 +99,52 @@ INSERT INTO `dichvu` (`id`, `name`) VALUES
 
 CREATE TABLE `dichvu_con` (
   `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
   `id_dichvu` int(11) NOT NULL,
-  `name` int(11) NOT NULL
+  `gia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `dichvu_con`
+--
+
+INSERT INTO `dichvu_con` (`id`, `name`, `id_dichvu`, `gia`) VALUES
+(1, 'Tim', 1, 150000),
+(2, 'Phổi', 1, 100000),
+(3, 'Tim', 1, 150000),
+(4, 'Phổi', 1, 100000),
+(5, 'Ruột già', 1, 130000),
+(6, 'Gan', 1, 100000),
+(7, 'Gãy chân', 2, 195000),
+(8, 'Bỏng', 2, 325000),
+(9, 'Gãy chân', 2, 120000),
+(10, 'Bỏng', 2, 130000),
+(11, 'Gãy tay', 2, 110000),
+(12, 'Hắc lào', 3, 100000),
+(13, 'Lang ben', 3, 115000),
+(14, 'Chỉnh hàm', 4, 1000000),
+(15, 'Tẩy vôi răng', 4, 200000),
+(16, 'Siêu âm 3D', 5, 250000),
+(17, 'Siêu âm 4D', 5, 300000),
+(18, 'Xoang', 6, 350000),
+(19, 'Viêm họng', 6, 230000),
+(20, 'Xoang', 6, 500000),
+(21, 'Viêm họng', 6, 350000),
+(22, 'Khám bệnh tại nhà', 7, 1500000),
+(23, 'Chăm sóc người già', 7, 2000000);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `donthuoc`
+--
+
+CREATE TABLE `donthuoc` (
+  `id` int(11) NOT NULL,
+  `tenbenh` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `tenthuoc` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `loaidichvu` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `ghichu` text COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -131,21 +180,22 @@ INSERT INTO `nhanvien` (`id`, `name`, `phone`, `email`, `diachi`, `level`, `stat
 CREATE TABLE `thuoc` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `ngay_sx` date NOT NULL,
-  `han_sd` date NOT NULL,
   `soluong` int(11) NOT NULL,
-  `gia_nhapkho` int(255) NOT NULL,
-  `gia_ban` int(11) NOT NULL,
-  `donvi_tinh` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL
+  `donvitinh` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `gianhap` int(11) NOT NULL,
+  `giaban` int(11) NOT NULL,
+  `tacdung` text COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `thuoc`
 --
 
-INSERT INTO `thuoc` (`id`, `name`, `ngay_sx`, `han_sd`, `soluong`, `gia_nhapkho`, `gia_ban`, `donvi_tinh`) VALUES
-(1, 'Panadol Extra', '2020-05-01', '2021-11-19', 100, 100000, 120000, 'Hộp'),
-(2, 'Paracetamol', '2020-05-02', '2022-02-24', 100, 90000, 150000, 'Hộp');
+INSERT INTO `thuoc` (`id`, `name`, `soluong`, `donvitinh`, `gianhap`, `giaban`, `tacdung`) VALUES
+(1, 'Paracetamol', 10, 'Hộp', 40000, 50000, 'Hạ sốt'),
+(2, 'Panadol Extra', 20, 'Hộp', 20000, 40000, 'Hạ sốt'),
+(3, 'Eszopiclone', 30, 'Hộp', 50000, 70000, 'An thần'),
+(4, 'Amlodipine', 60, 'Vỉ', 4000, 10000, 'Chẹn kênh canxi');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -170,6 +220,12 @@ ALTER TABLE `dichvu_con`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `donthuoc`
+--
+ALTER TABLE `donthuoc`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
@@ -189,18 +245,24 @@ ALTER TABLE `thuoc`
 -- AUTO_INCREMENT cho bảng `benhnhan`
 --
 ALTER TABLE `benhnhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `dichvu`
 --
 ALTER TABLE `dichvu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `dichvu_con`
 --
 ALTER TABLE `dichvu_con`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT cho bảng `donthuoc`
+--
+ALTER TABLE `donthuoc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -213,7 +275,7 @@ ALTER TABLE `nhanvien`
 -- AUTO_INCREMENT cho bảng `thuoc`
 --
 ALTER TABLE `thuoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

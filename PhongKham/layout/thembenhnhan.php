@@ -38,9 +38,6 @@
 			?>	
 
 			<form method="post" role="form" >
-				<div id="alert-sdt" >
-					
-				</div>
 				<div class="form-group">
 					<label>Số điện thoại</label>
 					<input id="sodienthoai" type="text" class="form-control"  name='phone'>

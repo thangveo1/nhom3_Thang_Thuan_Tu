@@ -130,6 +130,17 @@
 		$this->result = $this->query($sql);
 		return $this->select_cf();
 	}
-	public function add_donthuoc()
+	public function xuat_dichvu()
+	{
+		$sql = "SELECT * FROM dichvu ";
+		$this->result = $this->query($sql);
+		return $this->selectall_cf();
+	}
+	public function xuat_dichvu_con($id)
+	{
+		$sql = "SELECT * FROM dichvu_con WHERE id_dichvu = '".$id."'";
+		$this->result = $this->query($sql);
+		return $this->selectall_cf();
+	}
 }
  ?>

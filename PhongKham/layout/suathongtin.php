@@ -71,7 +71,7 @@
 				</div>
 				<div class="form-group">
 					<label>Số điện thoại</label>
-					<input id="sodienthoai" type="text" class="form-control"  name='phone' value="<?php echo $data['phone'] ?>">
+					<input type="text" class="form-control"  name='phone' value="<?php echo $data['phone'] ?>">
 				</div>
 				<div id="form-info">
 					<div class="form-group">

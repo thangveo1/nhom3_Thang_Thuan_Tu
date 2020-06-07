@@ -58,7 +58,7 @@
         
       </ul>
       <div class="navbar-right navbar-nav">
-       <a class="nav-link" href="#">Đăng xuất</a>
+       <a class="nav-link" href="../login.php">Đăng xuất</a>
      </div>
    </div>
  </nav>

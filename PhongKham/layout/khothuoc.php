@@ -15,16 +15,16 @@
 
 ?>
 
-<h5 class="text-center text-uppercase text-danger py-3">quản lý kho thuốc</h5>
+<h2 class="text-center text-info my-4">QUẢN LÝ KHO THUỐC</h2>
 
 <div class="col-8 mx-auto">
-  <a href="themthuoc.php" title="" ><button type="" class="btn btn-info float-right ">THÊM THUỐC</button></a>
+  <a href="themthuoc.php" title="" ><button type="" class="btn btn-info float-right mb-2">THÊM THUỐC</button></a>
 	<table class="table table-hover">
     <thead>
       <tr>
         <th>id</th>
-        <th>name</th>
-        <th>số lượng</th>
+        <th>Tên thuốc</th>
+        <th>Số lượng</th>
         <th>Đơn vị tính</th>
         <th>Tác dụng</th>
         <th>Giá nhập</th>

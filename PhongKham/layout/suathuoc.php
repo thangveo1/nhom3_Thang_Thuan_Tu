@@ -28,7 +28,7 @@
 		if($kq){
 			echo '<div class="alert alert-success alert-dismissible">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>Thống báo!</strong> Bạn đã chirnh suwar rhafnh coong. <a href="khothuoc.php"><b>Xem kho thuốc</b></a>
+  <strong>Thống báo!</strong> Bạn đã chỉnh sửa thành công. <a href="khothuoc.php"><b>Xem kho thuốc</b></a>
 </div>';
 		}
 
@@ -38,7 +38,7 @@
 
 ?>
 
-<h5 class="text-center text-uppercase text-danger py-3">Sửa thuốc</h5>
+<h2 class="text-center text-info my-4">SỨA THÔNG TIN THUỐC</h2>
 <form action="" method="post" accept-charset="utf-8" class="col-8 mx-auto text-center">
 	<p>Nhập tên thuốc</p>
 	<p>
