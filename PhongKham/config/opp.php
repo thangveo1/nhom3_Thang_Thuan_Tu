@@ -130,59 +130,16 @@
 		$this->result = $this->query($sql);
 		return $this->select_cf();
 	}
-	public function xuat_dichvu()
-	{
-		$sql = "SELECT * FROM dichvu ";
-		$this->result = $this->query($sql);
-		return $this->selectall_cf();
+	public function thongke_thuoc($ngaybd,$ngaykt){
+		$sql="SELECT ROW_NUMBER() OVER (order By B.id_thuoc) as stt, B.id_thuoc, SUM(B.soluong) as soluong, C.name FROM donthuoc_tong A inner join donthuoc_chitiet B on B.id_donthuoc=A.id inner join thuoc C on C.id = B.id_thuoc WHERE ngay_kham BETWEEN '".$ngaybd."' and '".$ngaykt."' GROUP BY B.id_thuoc, C.name";
+			$this->result = $this->query($sql);
+			return $this->selectall_cf();
+
 	}
-	public function xuat_dichvu_con($id)
-	{
-		$sql = "SELECT * FROM dichvu_con WHERE id_dichvu = '".$id."'";
-		$this->result = $this->query($sql);
-		return $this->selectall_cf();
-	}
-	public function select_bn_id($id)
-	{
-		$sql = "SELECT * FROM benhnhan WHERE id = '".$id."'";
-		$this->result = $this->query($sql);
-		return $this->select_cf();
-	}
-	public function select_thuoc_goiy($name)
-	{
-		$sql = "SELECT * FROM thuoc WHERE name like '%".$name."%'";
-		$this->result = $this->query($sql);
-		return $this->selectall_cf();
-	}
-
-	public function insert_donkham($id_benhnhan,$id_nhanvien,$name,$ghichu,$ngay_kham,$tai_kham,$id_dichvu,$tenthuoc,$soluong,$uudai)
-	{
-		$sql = "INSERT INTO donthuoc_tong(id, id_benhnhan, id_nhanvien, name, ghichu, ngay_kham, tai_kham, id_dichvu, tientruoc_uudai, tiensau_uudai, uudai) VALUES (NULL,'".$id_benhnhan."','".$id_nhanvien."','".$name."','".$ghichu."','".$ngay_kham."','".$tai_kham."','".$id_dichvu."',0,0,'".$uudai."')";
-		 $this->query($sql);
-
-		 $sql = "SELECT id from donthuoc_tong WHERE id_benhnhan = $id_benhnhan AND id_nhanvien = $id_nhanvien AND ngay_kham = '".$ngay_kham."'";
-		 $this->result = $this->query($sql);
-		$id =  $this->select_cf();
-
-
-
-		$sql = "INSERT INTO donthuoc_chitiet (id, id_donthuoc, id_thuoc, soluong, gia)VALUES";
-		// foreach ($tenthuoc as $value) {
-		// 	$sql = $sql.' (NULL, "1", "'.$value.'","'.$soluong[$value].'" , "2"),';
-		// }
-
-
-		for ($i=0; $i < count($tenthuoc); $i++) { 
-			if($i==count($tenthuoc)-1){
-				$sql = $sql.' (NULL, '.$id['id'].', "'.$tenthuoc[$i].'","'.$soluong[$tenthuoc[$i]].'" , (SELECT giaban FROM thuoc WHERE id = "'.$tenthuoc[$i].'") )';
-			}else{
-				$sql = $sql.' (NULL, '.$id['id'].', "'.$tenthuoc[$i].'","'.$soluong[$tenthuoc[$i]].'" , (SELECT giaban FROM thuoc WHERE id = "'.$tenthuoc[$i].'") ),';
-			}
-		}
-		  $this->query($sql);
-
-		$sql = 'UPDATE donthuoc_tong SET tientruoc_uudai=(SELECT SUM(gia*soluong) FROM donthuoc_chitiet WHERE id_donthuoc="'.$id['id'].'"),tiensau_uudai=(((SELECT SUM(gia*soluong) FROM donthuoc_chitiet WHERE id_donthuoc="'.$id['id'].'")/100)*(100-'.$uudai.')) WHERE id="'.$id['id'].'"';
-		return  $this->query($sql);
+	public function thongke_donthuoc($ngaybd,$ngaykt){
+		$sql="SELECT ROW_NUMBER() OVER (order By ngay_kham) as stt, SUBSTRING(ngay_kham,1,10) as ngay_kham, COUNT(*) as soluong FROM donthuoc_tong WHERE ngay_kham  BETWEEN '".$ngaybd."' and '".$ngaykt."' GROUP BY SUBSTRING(ngay_kham,1,10)";
+			$this->result = $this->query($sql);
+			return $this->selectall_cf();
 
 	}
 }
