@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 07, 2020 lúc 10:05 AM
+-- Thời gian đã tạo: Th6 17, 2020 lúc 04:37 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -63,8 +63,7 @@ INSERT INTO `benhnhan` (`id`, `name`, `phone`, `diachi`, `cmnd`, `ngay_sinh`, `g
 (15, 'Nguyễn Hữu Thắng', '0123456789', 'ghv6', '94613', '2230-08-05', 0, '2020-05-24', '2020-05-27', 'sezxrdctfgh'),
 (16, 'yèubnjsk', '67841563', 'ctrffvgh', '95862', '2000-02-05', 1, '2020-05-24', '2020-05-20', 'cfghbjnk'),
 (17, 'xdcfgvhj', '98562', 'fvghjk856', '45678', '8456-09-07', 1, '2020-05-24', '2020-05-30', 'dxfghj'),
-(18, 'xdcfgvhj', '98562', 'fvghjk856', '45678', '8456-09-07', 1, '2020-05-24', '2020-05-30', 'dxfghj'),
-(19, '', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>74</b><br />', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>98</b><br />', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>94</b><br />', '0000-00-00', 0, '2020-06-02', '0000-00-00', '<br /><b>Notice</b>:  Trying to access array offset on value of type int in <b>C:xampphtdocsPhongKhamlayoutsuathongtin.php</b> on line <b>106</b><br />');
+(18, 'xdcfgvhj', '98562', 'fvghjk856', '45678', '8456-09-07', 1, '2020-05-24', '2020-05-30', 'dxfghj');
 
 -- --------------------------------------------------------
 
@@ -136,16 +135,76 @@ INSERT INTO `dichvu_con` (`id`, `name`, `id_dichvu`, `gia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `donthuoc`
+-- Cấu trúc bảng cho bảng `donthuoc_chitiet`
 --
 
-CREATE TABLE `donthuoc` (
+CREATE TABLE `donthuoc_chitiet` (
   `id` int(11) NOT NULL,
-  `tenbenh` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `tenthuoc` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `loaidichvu` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `ghichu` text COLLATE utf8_vietnamese_ci NOT NULL
+  `id_donthuoc` int(11) NOT NULL,
+  `id_thuoc` int(11) NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `gia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donthuoc_chitiet`
+--
+
+INSERT INTO `donthuoc_chitiet` (`id`, `id_donthuoc`, `id_thuoc`, `soluong`, `gia`) VALUES
+(85, 38, 1, 5, 50000),
+(86, 38, 2, 4, 40000),
+(87, 38, 3, 1, 70000),
+(88, 39, 1, 5, 50000),
+(89, 39, 2, 4, 40000),
+(90, 39, 3, 1, 70000),
+(91, 40, 1, 5, 50000),
+(92, 40, 2, 4, 40000),
+(93, 40, 3, 1, 70000),
+(94, 41, 1, 5, 50000),
+(95, 41, 2, 4, 40000),
+(96, 41, 3, 1, 70000),
+(97, 42, 1, 5, 50000),
+(98, 42, 2, 4, 40000),
+(99, 42, 3, 1, 70000),
+(100, 43, 1, 5, 50000),
+(101, 43, 2, 4, 40000),
+(102, 43, 3, 1, 70000),
+(103, 44, 1, 5, 50000),
+(104, 44, 2, 4, 40000),
+(105, 44, 3, 1, 70000);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `donthuoc_tong`
+--
+
+CREATE TABLE `donthuoc_tong` (
+  `id` int(11) NOT NULL,
+  `id_benhnhan` int(11) NOT NULL,
+  `id_nhanvien` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `ghichu` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `ngay_kham` datetime NOT NULL,
+  `tai_kham` int(11) NOT NULL,
+  `id_dichvu` int(11) NOT NULL,
+  `tientruoc_uudai` int(11) NOT NULL,
+  `tiensau_uudai` int(11) NOT NULL,
+  `uudai` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donthuoc_tong`
+--
+
+INSERT INTO `donthuoc_tong` (`id`, `id_benhnhan`, `id_nhanvien`, `name`, `ghichu`, `ngay_kham`, `tai_kham`, `id_dichvu`, `tientruoc_uudai`, `tiensau_uudai`, `uudai`) VALUES
+(38, 15, 1, 'Cảm', 'nhớ ăn uống', '2020-06-17 09:35:56', 1, 3, 480000, 422400, 12),
+(39, 15, 1, 'Cảm', 'nhớ ăn uống', '2020-06-17 09:36:16', 1, 3, 480000, 422400, 12),
+(40, 15, 1, 'Cảm', 'nhớ ăn uống', '2020-06-17 09:36:18', 1, 3, 480000, 422400, 12),
+(41, 15, 1, 'Cảm', 'nhớ ăn uống', '2020-06-17 09:36:21', 1, 3, 480000, 422400, 12),
+(42, 15, 1, 'Cảm', 'nhớ ăn uống', '2020-06-17 09:36:26', 1, 3, 480000, 422400, 12),
+(43, 15, 1, 'Cảm', 'nhớ ăn uống', '2020-06-17 09:36:28', 1, 3, 480000, 422400, 12),
+(44, 15, 1, 'Cảm', 'nhớ ăn uống', '2020-06-17 09:36:30', 1, 3, 480000, 422400, 12);
 
 -- --------------------------------------------------------
 
@@ -220,9 +279,15 @@ ALTER TABLE `dichvu_con`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `donthuoc`
+-- Chỉ mục cho bảng `donthuoc_chitiet`
 --
-ALTER TABLE `donthuoc`
+ALTER TABLE `donthuoc_chitiet`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `donthuoc_tong`
+--
+ALTER TABLE `donthuoc_tong`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -260,10 +325,16 @@ ALTER TABLE `dichvu_con`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT cho bảng `donthuoc`
+-- AUTO_INCREMENT cho bảng `donthuoc_chitiet`
 --
-ALTER TABLE `donthuoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `donthuoc_chitiet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+
+--
+-- AUTO_INCREMENT cho bảng `donthuoc_tong`
+--
+ALTER TABLE `donthuoc_tong`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
