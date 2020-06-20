@@ -1,10 +1,6 @@
 <?php 
 	require_once("header.php");
 
-	session_start();
-	include('../config/opp.php');
-	$db = new Database;
-	$db->connect();
 	$count = 6;
 	$page = isset($_GET['page']) ? $_GET['page'] : 1;
 	 $data = $db->xemkhothuoc($page, $count);
@@ -18,7 +14,13 @@
 <h2 class="text-center text-info my-4">QUẢN LÝ KHO THUỐC</h2>
 
 <div class="col-8 mx-auto">
-  <a href="themthuoc.php" title="" ><button type="" class="btn btn-info float-right mb-2">THÊM THUỐC</button></a>
+  <div class="col-12 py-4 px-0">
+    <div class="navbar-form">
+        <input id="text-search" type="text" class="btn border col-5" placeholder="Nhập tên thuốc để tìm kiếm...">
+        <a href="themthuoc.php" title="" ><button type="" class="btn btn-info float-right mb-2">THÊM THUỐC</button>
+    </div>
+  </div>
+  </a>
 	<table class="table table-hover">
     <thead>
       <tr>
@@ -32,19 +34,19 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="ketqua-thuoc">
       <?php
       	if($data!=0){
       		foreach ($data as  $value) {
       			echo '<tr>';
-      			echo '<td>'.$value['id'].'</td>';
-      			echo '<td>'.$value['name'].'</td>';
-      			echo '<td>'.$value['soluong'].'</td>';
-      			echo '<td>'.$value['donvitinh'].'</td>';
-      			echo '<td>'.$value['tacdung'].'</td>';
-      			echo '<td>'.$value['gianhap'].'</td>';
-      			echo '<td>'.$value['giaban'].'</td>';
-      			echo '<td><a href="suathuoc.php?id='.$value['id'].'"><i class="fas fa-edit"></i></a></td>';
+        			echo '<td>'.$value['id'].'</td>';
+        			echo '<td>'.$value['name'].'</td>';
+        			echo '<td>'.$value['soluong'].'</td>';
+        			echo '<td>'.$value['donvitinh'].'</td>';
+        			echo '<td>'.$value['tacdung'].'</td>';
+        			echo '<td>'.$value['gianhap'].'</td>';
+        			echo '<td>'.$value['giaban'].'</td>';
+        			echo '<td><a href="suathuoc.php?id='.$value['id'].'"><i class="fas fa-edit"></i></a></td>';
       			echo '</tr>';
       		}
       	}
@@ -64,6 +66,17 @@
  	 	}
  	 }
  ?>
+ <!--SEARCH THÔNG TIN BÊNH NHÂN BẰNG TÊN-->
+  <script>
+    $(document).ready(function() {
+      $("#text-search").keyup(function() {
+        var a = $(this).val();
+        $.post("../ajax/search-tenthuoc-khothuoc.php",{giatri:a},function(data){
+          $("#ketqua-thuoc").html(data);
+        });
+      });     
+    });   
+  </script>
 </div>
 
 </div>
