@@ -32,7 +32,7 @@
 		{
 			$_SESSION['name']=$kq['name'];
 			$_SESSION['id']=$kq['id'];
-			header("Location:layout/thembenhnhan.php");
+			header("Location:layout/home.php");
 		}
 	}
 
@@ -56,9 +56,9 @@
 						</div>
 					</form>
 				</div>
-				<div class="modal-footer">
+				<!-- <div class="modal-footer">
 					<a href="#">Quên mật khẩu?</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>     
