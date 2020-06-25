@@ -1,9 +1,6 @@
 <?php 
 	require_once("header.php");
-	session_start();
-	include('../config/opp.php');
-	$db = new Database;
-	$db->connect();
+	
 	$dichvu = $db->xuat_dichvu();
 	if (isset($_POST['searchname'])){
 		$tim_benhnhan=$db->tim_benhnhan($_POST['searchname']);

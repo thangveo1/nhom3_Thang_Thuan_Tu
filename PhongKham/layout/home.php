@@ -13,13 +13,13 @@ require_once("header.php");
 			<h1>PHÒNG KHÁM ĐA KHOA ĐH TÂY NGUYÊN</h1>
 			<span><i>Địa chỉ: 567 Lê Duẩn, TP Buồn Ma Thuột</i></span>
 			<hr><hr>
-			<p>
+			<p style="color:#D6F8CA!important; font-size: 25px;">
 				<?php 
 	                echo 'Chào mừng bác sĩ: <b>' . $_SESSION['name'].'</b>';
 	            ?>
             </p>
             <hr>
-			<input type="submit" name="submit" value="Tiếp tục" class="btn btn-primary" onClick="popup_content('hide')" />
+			<a href="benhnhan.php"><input type="submit" name="submit" value="Tiếp tục" class="btn btn-primary" onClick="popup_content('hide')" /></a>
 		</center>
 	</div>
 </div>

@@ -1,10 +1,6 @@
 <?php 
 	require_once("header.php");
 
-	session_start();
-	include('../config/opp.php');
-	$db = new Database;
-	$db->connect();
 	
 	// $data = $db->benh_nhan();
 	if(isset($_GET['id']))

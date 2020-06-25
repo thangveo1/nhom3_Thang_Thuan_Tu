@@ -1,11 +1,6 @@
 <?php 
 	require_once("header.php");
 
-	session_start();
-	include('../config/opp.php');
-	$db = new Database;
-	$db->connect();
-
 	if(isset($_GET['id']))
 	{
 		$data = $db->thongtinbenhnhan($_GET['id']);

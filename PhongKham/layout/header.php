@@ -14,7 +14,9 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <title></title>
+  
   <link rel="stylesheet" href="../bootstrap/css/style.css">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
@@ -67,7 +69,7 @@
         
       </ul>
       <div class="navbar-right navbar-nav">
-        <span class="mr-5 py-2"> 
+        <span class="mr-5 py-2" style="color:#070F04!important"> 
           <?php if (isset($_SESSION['name']))
             {
                 echo 'Xin chào bác sĩ: <b>' . $_SESSION['name'].'</b>';

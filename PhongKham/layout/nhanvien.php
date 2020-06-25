@@ -1,13 +1,7 @@
 <?php 
 	require_once("header.php");
-
-	session_start();
-	include('../config/opp.php');
-	$db = new Database;
-	$db->connect();
 	
 	$data = $db->nhan_vien();
-
 
 ?>
 	<!--------------MAIN DSACH KH------------------>
